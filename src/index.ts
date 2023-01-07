@@ -261,13 +261,13 @@ function js_to_pb_element(js_element: any): serializerPb.Value {
 }
 
 export default {
-  async get(key: string): Promise<any> {
+  async getItem(key: string): Promise<any> {
     const result = await get_value_and_metadata(key);
     const value = get_value_description_from_proto(result.value);
     return value;
   },
 
-  async set(key: string, value: any) {
+  async setItem(key: string, value: any) {
     await set_value(key, value);
   },
 };

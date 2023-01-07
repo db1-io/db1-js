@@ -10,12 +10,12 @@ specifiers:
   typescript: ^4.9.4
 
 dependencies:
-  '@types/node': 18.11.18
   cross-fetch: 3.1.5
   long: 5.2.1
   protobufjs: 7.1.2
 
 devDependencies:
+  '@types/node': 18.11.18
   copyfiles: 2.4.1
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   typescript: 4.9.4

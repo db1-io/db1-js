@@ -13,8 +13,11 @@ Start setting and getting items:
 ```js
 import db1 from "db1";
 
-await db1.setItem("my-key", "hello word");
-const item = await db1.getItem("my-key");
+async function main() {
+  await db1.setItem("my-key", "hello word");
+  const item = await db1.getItem("my-key");
+  console.log(item);
+}
 
-console.log(item);
+main();
 ```

@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "copyfiles -u 1 \"src/**/*.{js,d.ts}\" dist && tsc",
+    "build": "copyfiles -u 1 \"src/**/*.{cjs,d.ts}\" dist && tsc",
     "test": "jest"
   },
   "keywords": [],

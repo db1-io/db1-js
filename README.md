@@ -14,8 +14,8 @@ Start setting and getting items:
 import db1 from "db1";
 
 async function main() {
-  await db1.setItem("my-key", "hello word");
-  const item = await db1.getItem("my-key");
+  await db1.setItem("topic", "hello word");
+  const item = await db1.getItem("topic");
   console.log(item);
 }
 

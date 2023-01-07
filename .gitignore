@@ -49,3 +49,4 @@ web_modules/
 .env.production.local
 .env.local
 
+dist

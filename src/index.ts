@@ -10,7 +10,6 @@ async function makeHttpRequest(url: string, data: any): Promise<any> {
   const httpResponse = await fetch(url, {
     method: "POST",
     body: data,
-    // mode: 'cors',
     headers: { "content-type": "application/octet-stream" },
   });
   return httpResponse;
@@ -40,8 +39,6 @@ function check_common_status(common: any) {
 
 async function get_value_and_metadata(resource_id: string) {
   let common_request = new apiRestPb.item_cr_0v1.CommonRequest();
-  // common_request.token = "";
-  // common_request.usage_message = "";
 
   const request = apiRestPb.item_cr_0v1.GetRequest.create({
     common: common_request,
@@ -275,24 +272,14 @@ function js_to_pb_element(js_element: any): serializerPb.Value {
   return pb_element;
 }
 
-async function get(key: string): Promise<any> {
-  const result = await get_value_and_metadata(key);
-  const value = get_value_description_from_proto(result.value);
-  return value;
-}
+export default {
+  async get(key: string): Promise<any> {
+    const result = await get_value_and_metadata(key);
+    const value = get_value_description_from_proto(result.value);
+    return value;
+  },
 
-async function set(key: string, value: any) {
-  await set_value(key, value);
-}
-
-async function main() {
-  const key = "test-str";
-
-  await set(key, "lolnice");
-
-  const value = await get(key);
-
-  console.log(value);
-}
-
-main();
+  async set(key: string, value: any) {
+    await set_value(key, value);
+  },
+};

@@ -90,23 +90,11 @@ async function get_value_and_metadata(resource_id: string) {
   };
 }
 
-export const PROTO_TYPES_TO_JS_TYPES = {
-  INT64_: "int",
-  FLOAT_: "float",
-  STRING_: "string",
-  BOOL_: "bool",
-  BYTES_: "bytes",
-  LIST: "list",
-  DICT: "dict",
-  NDARRAY: "ndarray",
-  DATAFRAME: "dataframe",
-};
-
-export function get_type_from_proto(proto_value: any): string {
+function get_type_from_proto(proto_value: any): string {
   return serializerPb.Value.Type[proto_value.type];
 }
 
-export function get_value_description_from_proto(
+function get_value_description_from_proto(
   proto_value: any,
   max_length?: number
 ): string {
@@ -160,7 +148,7 @@ export function get_value_description_from_proto(
   }
 }
 
-export async function set_value(resource_id: string, value: any) {
+async function set_value(resource_id: string, value: any) {
   let common_request = new apiRestPb.item_cr_0v1.CommonRequest();
   // common_request.token = "";
   // common_request.usage_message = "";
@@ -193,7 +181,7 @@ export async function set_value(resource_id: string, value: any) {
   }
 }
 
-export function get_element_type(element: any): string {
+function get_element_type(element: any): string {
   if (typeof element == "number" && Number.isInteger(element)) {
     return "int";
   }
@@ -214,7 +202,7 @@ export function get_element_type(element: any): string {
   throw new Error(`Element of type '${typeof element}' could classified.`);
 }
 
-export function serialize_element(js_element: any): Uint8Array {
+function serialize_element(js_element: any): Uint8Array {
   const pb_element = js_to_pb_element(js_element);
   const ser_element = serializerPb.Value.encode(pb_element).finish();
   return ser_element;

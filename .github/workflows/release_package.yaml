@@ -1,25 +1,17 @@
-on:
-  release:
-    types: [published]
+on: push
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build
-        run: pnpm build
-
-      - name: Publish to npm
-        run: npm publish --tag ${{ github.event.release.tag_name }}
+      - run: npm install -g pnpm
+      - run: pnpm install
+      # - run: pnpm test
+      - run: pnpm build
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_JS_ACCESS_TOKEN }}

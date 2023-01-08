@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import db1 from "../src/index";
+import db1 from "../src/client";
 
 describe("db1", () => {
   test("methods", async () => {

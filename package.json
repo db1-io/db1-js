@@ -9,9 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "start": "ts-node src/index.ts",
     "build": "tsc",
-    "devbuild": "tsc && rm -rf ../../tmp/db1test/node_modules/db1/dist &&  cp -r dist ../../tmp/db1test/node_modules/db1/dist && cp package.json ../../tmp/db1test/node_modules/db1/package.json",
     "test": "vitest"
   },
   "keywords": [],

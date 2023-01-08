@@ -1,3 +1,13 @@
+## Development
+
+Start the test:
+
+```
+pnpm test
+```
+
+Do the changes, and make sure the tests are passing.
+
 ## Release Process
 
 Bump the package version according to [semver](https://semver.org/):

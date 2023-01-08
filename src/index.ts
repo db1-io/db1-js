@@ -3,7 +3,7 @@ import * as apiRestPb from "./proto_stubs/api/item_cr_0v1_pb";
 import fetch from "cross-fetch";
 
 const DB1_API_ITEM_GET_URL = "https://item.db1.io/get";
-const DB1_API_ITEM_CREATE_URL = "https://item.db1.io/create";
+// const DB1_API_ITEM_CREATE_URL = "https://item.db1.io/create";
 const DB1_API_ITEM_SET_URL = "https://item.db1.io/set";
 
 async function makeHttpRequest(url: string, data: any): Promise<any> {

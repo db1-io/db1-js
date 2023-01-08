@@ -4,7 +4,7 @@ import {
   setValue,
 } from "./utils/utils";
 
-export default {
+export const db1 = {
   async getItem(key: string): Promise<any> {
     const result = await getValueAndMetadata(key);
     const value = getValueDescriptionFromProto(result.value);

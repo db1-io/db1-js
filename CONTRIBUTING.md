@@ -1,3 +1,11 @@
+## Package Manager
+
+We're using `pnpm` as a package manager for this repo. Install it using:
+
+```
+npm install -g pnpm
+```
+
 ## Development
 
 Start the test:

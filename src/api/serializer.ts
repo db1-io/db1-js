@@ -133,6 +133,7 @@ function decodeNdarray(pbValue: serializerPb.Value): any {
         shape: pbValue.ndarray.shape,
         type: pbValue.ndarray.type
     };
+    return jsValue;
 }
 
 

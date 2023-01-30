@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apache-arrow/es5-esm": "^11.0.0",
     "cross-fetch": "^3.1.5",
     "long": "^5.2.1",
     "protobufjs": "^7.1.2"

@@ -1,12 +1,11 @@
 import { describe, test, expect } from "vitest";
 import { db1 } from "../src/index";
 
-
 const VALUE_LIST = {
     "int": 465,
     "float": 846.346,
-    "str": "Hello World!",
-    "bool_true": true,
+    "string": "Hello World!",
+    "bool": true,
     "bool_false": false,
     // "bytes": Uint8Array([123123]),
     "list": [1, 2, 3, 45, "asd", 3244],
@@ -30,6 +29,90 @@ const VALUE_LIST = {
 
 
 describe("db1", () => {
+
+    test("getValueType int", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["int"]);
+        expect(type).toBe("int");
+    });
+
+    test("getValueType float", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["float"]);
+        expect(type).toBe("float");
+    });
+
+    test("getValueType string", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["string"]);
+        expect(type).toBe("string");
+    });
+
+    test("getValueType bool", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["bool"]);
+        expect(type).toBe("bool");
+    });
+
+    test("getValueType bool_false", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["bool_false"]);
+        expect(type).toBe("bool");
+    });
+
+    test("getValueType list", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["list"]);
+        expect(type).toBe("list");
+    });
+
+    test("getValueType nested_list", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["nested_list"]);
+        expect(type).toBe("list");
+    });
+
+    test("getValueType nested_list_dict", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["nested_list_dict"]);
+        expect(type).toBe("list");
+    });
+
+    test("getValueType dict", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["dict"]);
+        expect(type).toBe("dict");
+    });
+
+    test("getValueType nested_dict", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["nested_dict"]);
+        expect(type).toBe("dict");
+    });
+
+    test("getValueType nested_dict_list", async () => {
+        const type = db1.utils.getValueType(VALUE_LIST["nested_dict_list"]);
+        expect(type).toBe("dict");
+    });
+
+
+
+    test("valueHasKeyPath 1", async () => {
+        const keyPath = ["d", "e", "i", "0"];
+        const hasKeyPath = db1.utils.valueHasKeyPath(VALUE_LIST["nested_dict_list"], keyPath);
+        expect(hasKeyPath).toBe(true);
+    });
+
+    test("valueHasKeyPath 2", async () => {
+        const keyPath = ["d", "i", "0", "a"];
+        const hasKeyPath = db1.utils.valueHasKeyPath(VALUE_LIST["nested_dict_list"], keyPath);
+        expect(hasKeyPath).toBe(false);
+    });
+
+    test("valueHasKeyPath 3", async () => {
+        const keyPath = ["0"];
+        const hasKeyPath = db1.utils.valueHasKeyPath(VALUE_LIST["nested_dict_list"], keyPath);
+        expect(hasKeyPath).toBe(false);
+    });
+
+
+    test("getSubValue", async () => {
+        const keyPath = ["d", "e", "i", "0"];
+        const subValue = db1.utils.getSubValue(VALUE_LIST["nested_dict_list"], keyPath);
+        expect(subValue).toEqual([7, 8]);
+    });
+
+
     const key = "test";
 
     test("int", async () => {
@@ -46,15 +129,15 @@ describe("db1", () => {
         expect(item).toBeCloseTo(value);
     });
 
-    test("str", async () => {
-        const value = VALUE_LIST["str"];
+    test("string", async () => {
+        const value = VALUE_LIST["string"];
         await db1.setItem(key, value);
         const item = await db1.getItem(key);
         expect(item).toBe(value);
     });
 
-    test("bool_true", async () => {
-        const value = VALUE_LIST["bool_true"];
+    test("bool", async () => {
+        const value = VALUE_LIST["bool"];
         await db1.setItem(key, value);
         const item = await db1.getItem(key);
         expect(item).toBe(value);

@@ -1,7 +1,7 @@
-import { Table, tableFromIPC, tableToIPC } from '@apache-arrow/es5-esm';
+import { tableFromIPC, tableToIPC } from '@apache-arrow/es5-esm';
 
 import * as serializerPb from "../proto_stubs/serializer/serializer_pb";
-
+import { getValueType } from "./utils";
 
 function encodeInt(jsValue: number): serializerPb.Value {
     let pbValue = serializerPb.Value.create();
@@ -199,18 +199,4 @@ export function dumps(jsValue: any): Uint8Array {
 export function loads(pbValue: Uint8Array): any {
     let pbValueObj = serializerPb.Value.decode(pbValue);
     return decodeValue(pbValueObj);
-}
-
-
-export function getValueType(jsValue: any): string {
-    if (typeof jsValue == "number" && Number.isInteger(jsValue)) { return "int"; }
-    if (typeof jsValue == "number") { return "float"; }
-    if (typeof jsValue == "string") { return "string"; }
-    if (typeof jsValue == "boolean") { return "bool"; }
-    if (typeof jsValue == "object" && jsValue instanceof Table) { return "data_frame"; }
-    if (typeof jsValue == "object" && jsValue.constructor == Uint8Array) { return "bytes"; }
-    if (typeof jsValue == "object" && jsValue.constructor == Array) { return "list"; }
-    if (typeof jsValue == "object" && "__value_type__" in jsValue && jsValue["__value_type__"] == "ndarray") { return "ndarray"; }
-    if (typeof jsValue == "object") { return "dict"; }
-    throw new Error(`Value of type '${typeof jsValue}' could not be classified.`);
 }

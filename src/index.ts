@@ -4,7 +4,15 @@ import {
   getItemAndMetaVariablesRequest,
   setRequest
 } from "./api/item/requests";
-import { dumps, loads } from "./api/serializer";
+import { 
+    dumps, 
+    loads 
+} from "./api/serializer";
+import {
+    InternalError,
+    NotFoundError,
+    BadRequestError,
+} from "./api/item/errors";
 
 
 export const db1 = {
@@ -33,4 +41,11 @@ export const db1 = {
         let valueBytes = dumps(value)
         await setRequest(key, valueBytes)
     },
+};
+
+
+export const errors = {
+    InternalError,
+    NotFoundError,
+    BadRequestError,
 };

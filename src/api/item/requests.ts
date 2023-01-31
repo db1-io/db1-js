@@ -5,7 +5,10 @@ import {
 } from "./environmentVars";
 import { makeHttpRequest } from "../httpUtils";
 import { checkComonStatus } from "./utils";
-
+import {
+    NotFoundError,
+    BadRequestError,
+} from "./errors";
 
 
 export async function deleteRequest(key: string) {
@@ -30,10 +33,10 @@ export async function deleteRequest(key: string) {
     checkComonStatus(response.common);
 
     if (response.status == apiRestPb.item_cr_0v1.DeleteResponse.Status.NOT_FOUND) {
-        throw new Error("Not found");
+        throw new NotFoundError("Not found");
     }
     if (response.status == apiRestPb.item_cr_0v1.DeleteResponse.Status.INVALID_RESOURCE_ID) {
-        throw new Error("Invalid key");
+        throw new BadRequestError("Invalid key");
     }
     if (response.status == apiRestPb.item_cr_0v1.DeleteResponse.Status.DELETED) {}
 }
@@ -70,17 +73,13 @@ export async function getRequest(key: string, maxSizeBytes?: number): Promise<ge
 
     checkComonStatus(response.common);
     if (response.status == apiRestPb.item_cr_0v1.GetResponse.Status.NOT_FOUND) {
-        throw new Error("Not found");
+        throw new NotFoundError("Not found");
     }
 
     if (response.sizeBytesBiggerThanMax) {
-        throw new Error(`Item value is bigger than the max size of ${maxSizeBytes} bytes.`);
+        throw new BadRequestError(`Item value is bigger than the max size of ${maxSizeBytes} bytes.`);
     }
     if (response.status == apiRestPb.item_cr_0v1.GetResponse.Status.FOUND) {}
-    
-    if (response.sizeBytesBiggerThanMax) {
-        throw new Error(`Item value is bigger than the max size of ${maxSizeBytes} bytes.`);
-    }
 
     return {
         value: response.itemValue,
@@ -117,12 +116,12 @@ export async function getItemAndMetaVariablesRequest(
     );
 
     if (response.status == apiRestPb.item_cr_0v1.GetResponse.Status.NOT_FOUND) {
-        throw new Error("Not found");
+        throw new NotFoundError("Not found");
     }
     if (response.status == apiRestPb.item_cr_0v1.GetResponse.Status.FOUND) {}
 
     if (response.sizeBytesBiggerThanMax) {
-        throw new Error(`Item value is bigger than the max size of ${maxSizeBytes} bytes.`);
+        throw new BadRequestError(`Item value is bigger than the max size of ${maxSizeBytes} bytes.`);
     }
 
     return {
@@ -157,10 +156,10 @@ export async function setRequest(key: string, value: Uint8Array) {
 
     checkComonStatus(response.common);
     if (response.status == apiRestPb.item_cr_0v1.SetResponse.Status.NOT_FOUND) {
-        throw new Error(`An item with resource id "${key}" does not exist.`);
+        throw new NotFoundError(`An item with resource id "${key}" does not exist.`);
     }
     if (response.status == apiRestPb.item_cr_0v1.SetResponse.Status.INVALID_RESOURCE_ID) {
-        throw new Error("Invalid key");
+        throw new BadRequestError("Invalid key");
     }
     if (response.status == apiRestPb.item_cr_0v1.SetResponse.Status.UPDATED) {}
 }

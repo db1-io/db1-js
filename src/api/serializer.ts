@@ -1,7 +1,7 @@
 import { tableFromIPC, tableToIPC } from '@apache-arrow/es5-esm';
 
 import * as serializerPb from "../proto_stubs/serializer/serializer_pb";
-import { getValueType } from "./utils";
+import { getValueType, PROTO_TYPE } from "./utils";
 
 function encodeInt(jsValue: number): serializerPb.Value {
     let pbValue = serializerPb.Value.create();
@@ -150,16 +150,16 @@ function decodeDataFrame(pbValue: serializerPb.Value): any {
 }
 
 
-const ENCODERS: { [jsType: string]: { (jsValue: any): serializerPb.Value; }; } = {
-    "int": encodeInt,
-    "float": encodeFloat,
-    "string": encodeString,
-    "bool": encodeBool,
-    "bytes": encodeBytes,
-    "list": encodeList,
-    "dict": encodeDict,
-    "ndarray": encodeNdarray,
-    "data_frame": encodeDataFrame
+const ENCODERS: { [type: number]: { (jsValue: any): serializerPb.Value; }; } = {
+    [PROTO_TYPE.INT64_]: encodeInt,
+    [PROTO_TYPE.FLOAT_]: encodeFloat,
+    [PROTO_TYPE.STRING_]: encodeString,
+    [PROTO_TYPE.BOOL_]: encodeBool,
+    [PROTO_TYPE.BYTES_]: encodeBytes,
+    [PROTO_TYPE.LIST]: encodeList,
+    [PROTO_TYPE.DICT]: encodeDict,
+    [PROTO_TYPE.NDARRAY]: encodeNdarray,
+    [PROTO_TYPE.DATAFRAME]: encodeDataFrame
 }
 
 
@@ -174,9 +174,6 @@ const DECODERS: { (jsValue: serializerPb.Value): any; } [] = [
     decodeNdarray,
     decodeDataFrame
 ]
-
-
-export const jsTypes = ["int", "float", "string", "bool", "bytes", "list", "dict", "ndarray, data_frame"];
 
 
 function encodeValue(jsValue: any): serializerPb.Value {
@@ -194,7 +191,6 @@ export function dumps(jsValue: any): Uint8Array {
     let pbValue = encodeValue(jsValue);
     return serializerPb.Value.encode(pbValue).finish();
 }
-
 
 export function loads(pbValue: Uint8Array): any {
     let pbValueObj = serializerPb.Value.decode(pbValue);

@@ -32,57 +32,57 @@ describe("db1", () => {
 
     test("getValueType int", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["int"]);
-        expect(type).toBe("int");
+        expect(type).toBe(db1.utils.PROTO_TYPE.INT64_);
     });
 
     test("getValueType float", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["float"]);
-        expect(type).toBe("float");
+        expect(type).toBe(db1.utils.PROTO_TYPE.FLOAT_);
     });
 
     test("getValueType string", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["string"]);
-        expect(type).toBe("string");
+        expect(type).toBe(db1.utils.PROTO_TYPE.STRING_);
     });
 
     test("getValueType bool", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["bool"]);
-        expect(type).toBe("bool");
+        expect(type).toBe(db1.utils.PROTO_TYPE.BOOL_);
     });
 
     test("getValueType bool_false", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["bool_false"]);
-        expect(type).toBe("bool");
+        expect(type).toBe(db1.utils.PROTO_TYPE.BOOL_);
     });
 
     test("getValueType list", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["list"]);
-        expect(type).toBe("list");
+        expect(type).toBe(db1.utils.PROTO_TYPE.LIST);
     });
 
     test("getValueType nested_list", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["nested_list"]);
-        expect(type).toBe("list");
+        expect(type).toBe(db1.utils.PROTO_TYPE.LIST);
     });
 
     test("getValueType nested_list_dict", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["nested_list_dict"]);
-        expect(type).toBe("list");
+        expect(type).toBe(db1.utils.PROTO_TYPE.LIST);
     });
 
     test("getValueType dict", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["dict"]);
-        expect(type).toBe("dict");
+        expect(type).toBe(db1.utils.PROTO_TYPE.DICT);
     });
 
     test("getValueType nested_dict", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["nested_dict"]);
-        expect(type).toBe("dict");
+        expect(type).toBe(db1.utils.PROTO_TYPE.DICT);
     });
 
     test("getValueType nested_dict_list", async () => {
         const type = db1.utils.getValueType(VALUE_LIST["nested_dict_list"]);
-        expect(type).toBe("dict");
+        expect(type).toBe(db1.utils.PROTO_TYPE.DICT);
     });
 
 
@@ -192,10 +192,10 @@ describe("db1", () => {
         expect(item).toEqual(value);
     });
     
-    // test("remove", async () => {
-    //     await db1.setItem(key, 1);
-    //     await db1.removeItem(key);
-    //     const item = await db1.getItem(key);
-    //     expect(item).toBe(undefined);
-    // });
+    // // test("remove", async () => {
+    // //     await db1.setItem(key, 1);
+    // //     await db1.removeItem(key);
+    // //     const item = await db1.getItem(key);
+    // //     expect(item).toBe(undefined);
+    // // });
 });

@@ -1,4 +1,4 @@
-import * as apiRestPb from "../../proto_stubs/api/item_cr_0v1_pb";
+import * as apiRestPb from "../proto_stubs/api/item_cr_0v1_pb";
 import {
     InternalError,
     BadRequestError,

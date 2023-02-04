@@ -3,10 +3,12 @@ import {
   getRequest,
   getItemAndMetaVariablesRequest,
   setRequest
-} from "./api/item/requests";
-import { dumps, loads } from "./api/serializer";
-import * as errors from "./api/item/errors";
-import * as utils from "./api/utils";
+} from "./item/requests";
+import { dumps, loads } from "./serializer";
+import * as errors from "./item/errors";
+import * as utils from "./utils";
+import * as serializerPb from "./proto_stubs/serializer/serializer_pb";
+import * as itemApiPb from "./proto_stubs/api/item_cr_0v1_pb";
 
 
 export const db1 = {
@@ -38,4 +40,8 @@ export const db1 = {
 
     errors,
     utils,
+    protos : {
+        serializerPb,
+        itemApiPb
+    }
 };

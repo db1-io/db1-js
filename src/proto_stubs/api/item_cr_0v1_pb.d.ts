@@ -457,7 +457,7 @@ export namespace item_cr_0v1 {
         withoutItemValue?: (boolean|null);
 
         /** GetRequest maxSizeBytes */
-        maxSizeBytes?: (number|Long|null);
+        maxSizeBytes?: (number|null);
     }
 
     /** Represents a GetRequest. */
@@ -482,7 +482,7 @@ export namespace item_cr_0v1 {
         public withoutItemValue: boolean;
 
         /** GetRequest maxSizeBytes. */
-        public maxSizeBytes: (number|Long);
+        public maxSizeBytes: number;
 
         /**
          * Creates a new GetRequest instance using the specified properties.
@@ -581,13 +581,13 @@ export namespace item_cr_0v1 {
         sizeBytesBiggerThanMax?: (boolean|null);
 
         /** GetResponse sizeBytes */
-        sizeBytes?: (number|Long|null);
+        sizeBytes?: (number|null);
 
         /** GetResponse createdMs */
-        createdMs?: (number|Long|null);
+        createdMs?: (number|null);
 
         /** GetResponse updatedMs */
-        updatedMs?: (number|Long|null);
+        updatedMs?: (number|null);
     }
 
     /** Represents a GetResponse. */
@@ -615,13 +615,13 @@ export namespace item_cr_0v1 {
         public sizeBytesBiggerThanMax: boolean;
 
         /** GetResponse sizeBytes. */
-        public sizeBytes: (number|Long);
+        public sizeBytes: number;
 
         /** GetResponse createdMs. */
-        public createdMs: (number|Long);
+        public createdMs: number;
 
         /** GetResponse updatedMs. */
-        public updatedMs: (number|Long);
+        public updatedMs: number;
 
         /**
          * Creates a new GetResponse instance using the specified properties.

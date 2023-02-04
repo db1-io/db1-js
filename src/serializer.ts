@@ -1,6 +1,6 @@
-import { tableFromIPC, tableToIPC } from '@apache-arrow/es5-esm';
+import { tableFromIPC, tableToIPC } from 'apache-arrow';
 
-import * as serializerPb from "../proto_stubs/serializer/serializer_pb";
+import * as serializerPb from "./proto_stubs/serializer/serializer_pb";
 import { getValueType, PROTO_TYPE } from "./utils";
 
 function encodeInt(jsValue: number): serializerPb.Value {
@@ -79,7 +79,7 @@ function encodeList(jsValue: any[]): serializerPb.Value {
 
 
 function decodeList(pbValue: serializerPb.Value): any[] {
-    let jsValue = [];
+    let jsValue: any[] = [];
     for (const i in pbValue.list) {
         jsValue.push(decodeValue(serializerPb.Value.create(pbValue.list[i])))
     }
@@ -90,8 +90,8 @@ function decodeList(pbValue: serializerPb.Value): any[] {
 function encodeDict(jsValue: {[key: string]: any}): serializerPb.Value {
     let pbValue = serializerPb.Value.create();
     pbValue.type = serializerPb.Value.Type.DICT;
-    let keys = [];
-    let values = []
+    let keys: string[] = [];
+    let values: serializerPb.Value[] = []
     for (const key in jsValue) {
         keys.push(key);
         values.push(encodeValue(jsValue[key]));
@@ -104,8 +104,17 @@ function encodeDict(jsValue: {[key: string]: any}): serializerPb.Value {
 
 function decodeDict(pbValue: serializerPb.Value): {[key: string]: any} {
     let jsValue = <{ [key: string]: any }>{};
-    for (const i in pbValue.dict.keys) {
-        jsValue[pbValue.dict.keys[i]] = decodeValue(serializerPb.Value.create(pbValue.dict.values[i]));
+    if (pbValue.dict == null || pbValue.dict == undefined) {
+        throw new Error("Dict is null or undefined");
+    }
+    if (pbValue.dict.values == null || pbValue.dict.values == undefined) {
+        throw new Error("Dict values is null or undefined");
+    }
+    if (pbValue.dict.keys == null || pbValue.dict.keys == undefined) {
+        throw new Error("Dict keys is null or undefined");
+    }
+    for (let i: number = 0; i < pbValue.dict.keys.length; i++) {
+        jsValue[pbValue.dict.keys[i]!] = decodeValue(serializerPb.Value.create(pbValue.dict.values[i]!));
     }
     return jsValue;
 }
@@ -127,6 +136,12 @@ function encodeNdarray(jsValue: any): serializerPb.Value {
 
 function decodeNdarray(pbValue: serializerPb.Value): any {
     let jsValue = <{ [key: string]: any }>{};
+    if (pbValue.ndarray == null || pbValue.ndarray == undefined) {
+        throw new Error("NDArray is null or undefined");
+    }
+    if (pbValue.ndarray.bytes_ == null || pbValue.ndarray.bytes_ == undefined) {
+        throw new Error("NDArray bytes is null or undefined");
+    }
     jsValue = {
         __value_type__: "ndarray",
         bytes: Uint8Array.from(pbValue.ndarray.bytes_),
@@ -178,12 +193,12 @@ const DECODERS: { (jsValue: serializerPb.Value): any; } [] = [
 
 function encodeValue(jsValue: any): serializerPb.Value {
     const jsType = getValueType(jsValue);
-    return ENCODERS[jsType](jsValue);
+    return ENCODERS[jsType]!(jsValue);
 }
 
 
 function decodeValue(pbValue: serializerPb.Value): any {
-    return DECODERS[pbValue.type - 1](pbValue);
+    return DECODERS[pbValue.type - 1]!(pbValue);
 }
 
 

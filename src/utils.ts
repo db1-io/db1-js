@@ -1,9 +1,8 @@
-import { Table } from '@apache-arrow/es5-esm';
+import { Table } from 'apache-arrow';
 
-import * as serializerPb from "../proto_stubs/serializer/serializer_pb";
+import * as serializerPb from "./proto_stubs/serializer/serializer_pb";
 
-
-
+export const PROTO_VALUE = serializerPb.Value
 export const PROTO_TYPE = serializerPb.Value.Type
 
 export const PRETTY_TYPE: {[protoType: number]: string} = {
@@ -73,8 +72,8 @@ export function valueHasKeyPath(value: any, keys: string[]): boolean {
     for (let i=0; i<keys.length; i++) {
         const subValueType = getValueType(subValue);
         if (subValueType != PROTO_TYPE.DICT && subValueType != PROTO_TYPE.LIST) { return false; }
-        if (!(keys[i] in subValue)) { return false; }
-        subValue = subValue[keys[i]];
+        if (!(keys[i]! in subValue)) { return false; }
+        subValue = subValue[keys[i]!];
     }
     return true;
 }
@@ -84,7 +83,7 @@ export function getSubValue(value: any, keys: string[]) {
     if (keys.length == 0) { return value; }
     let subValue = value;
     for (let i=0; i<keys.length; i++) {
-        subValue = subValue[keys[i]];
+        subValue = subValue[keys[i]!];
     }
     return subValue;
 }

@@ -1,4 +1,4 @@
-import * as apiRestPb from "../../proto_stubs/api/item_cr_0v1_pb";
+import * as apiRestPb from "../proto_stubs/api/item_cr_0v1_pb";
 import {
     DB1_API_ITEM_SET_URL,
     DB1_API_ITEM_GET_URL,

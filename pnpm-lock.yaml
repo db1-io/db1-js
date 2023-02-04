@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@apache-arrow/es5-esm': ^11.0.0
   '@types/node': ^18.11.18
   apache-arrow: ^11.0.0
   cross-fetch: ^3.1.5
@@ -13,7 +12,6 @@ specifiers:
   vitest: ^0.26.3
 
 dependencies:
-  '@apache-arrow/es5-esm': 11.0.0
   apache-arrow: 11.0.0
   cross-fetch: 3.1.5
   long: 5.2.1
@@ -27,22 +25,6 @@ devDependencies:
   vitest: 0.26.3
 
 packages:
-
-  /@apache-arrow/es5-esm/11.0.0:
-    resolution: {integrity: sha512-Z4ctJxxQP2/Qeyn+SEuTNby6+lN6qww6y+INF/Tp8oB0MISO1KhpXMXJj/f2VEBubEBf6otm/PrGrOVghW57NQ==}
-    hasBin: true
-    dependencies:
-      '@types/command-line-args': 5.2.0
-      '@types/command-line-usage': 5.0.2
-      '@types/node': 18.7.23
-      '@types/pad-left': 2.1.1
-      command-line-args: 5.2.1
-      command-line-usage: 6.1.3
-      flatbuffers: 2.0.4
-      json-bignum: 0.0.3
-      pad-left: 2.1.0
-      tslib: 2.5.0
-    dev: false
 
   /@babel/helper-string-parser/7.19.4:
     resolution: {integrity: sha512-nHtDoQcuqFmwYNYPz3Rah5ph2p8PFeFCsZk9A/48dPc/rGocJ5J3hAAZ7pb76VWX3fZKu+uEr/FhH5jLx7umrw==}

@@ -1,6 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@apache-arrow/es5-cjs': ^11.0.0
+  '@apache-arrow/esnext-cjs': ^11.0.0
+  '@apache-arrow/esnext-esm': ^11.0.0
+  '@apache-arrow/esnext-umd': ^11.0.0
+  '@apache-arrow/ts': ^11.0.0
   '@types/node': ^18.11.18
   apache-arrow: ^11.0.0
   cross-fetch: ^3.1.5
@@ -12,6 +17,11 @@ specifiers:
   vitest: ^0.26.3
 
 dependencies:
+  '@apache-arrow/es5-cjs': 11.0.0
+  '@apache-arrow/esnext-cjs': 11.0.0
+  '@apache-arrow/esnext-esm': 11.0.0
+  '@apache-arrow/esnext-umd': 11.0.0
+  '@apache-arrow/ts': 11.0.0
   apache-arrow: 11.0.0
   cross-fetch: 3.1.5
   long: 5.2.1
@@ -25,6 +35,86 @@ devDependencies:
   vitest: 0.26.3
 
 packages:
+
+  /@apache-arrow/es5-cjs/11.0.0:
+    resolution: {integrity: sha512-lNQzaC7kMRHXGz90XnhQxaTKm8UPEkSXv+dUoScvbGZeRuefu629ksgc8C1nRS9exIe+zH0W5fcDyHcTrrzi6w==}
+    hasBin: true
+    dependencies:
+      '@types/command-line-args': 5.2.0
+      '@types/command-line-usage': 5.0.2
+      '@types/node': 18.7.23
+      '@types/pad-left': 2.1.1
+      command-line-args: 5.2.1
+      command-line-usage: 6.1.3
+      flatbuffers: 2.0.4
+      json-bignum: 0.0.3
+      pad-left: 2.1.0
+      tslib: 2.5.0
+    dev: false
+
+  /@apache-arrow/esnext-cjs/11.0.0:
+    resolution: {integrity: sha512-S3oddRt0WyvlEsf8sl3ZbpE1R29wU0jocjFovK4TBAg0IaGM+5EncuiVvjSNw8O+LLlSQRq5LKBKf6Iw9X6fOg==}
+    hasBin: true
+    dependencies:
+      '@types/command-line-args': 5.2.0
+      '@types/command-line-usage': 5.0.2
+      '@types/node': 18.7.23
+      '@types/pad-left': 2.1.1
+      command-line-args: 5.2.1
+      command-line-usage: 6.1.3
+      flatbuffers: 2.0.4
+      json-bignum: 0.0.3
+      pad-left: 2.1.0
+      tslib: 2.5.0
+    dev: false
+
+  /@apache-arrow/esnext-esm/11.0.0:
+    resolution: {integrity: sha512-EUznE3ZooWIPrWLdY3jlh9DIM5wnne2rY0LldSJeIVoK+MbP8hfk6jHG2zsLRGfDHqEPcsE+QqpWkTXQKYBMcA==}
+    hasBin: true
+    dependencies:
+      '@types/command-line-args': 5.2.0
+      '@types/command-line-usage': 5.0.2
+      '@types/node': 18.7.23
+      '@types/pad-left': 2.1.1
+      command-line-args: 5.2.1
+      command-line-usage: 6.1.3
+      flatbuffers: 2.0.4
+      json-bignum: 0.0.3
+      pad-left: 2.1.0
+      tslib: 2.5.0
+    dev: false
+
+  /@apache-arrow/esnext-umd/11.0.0:
+    resolution: {integrity: sha512-ZJIbWYQDmH5vaVHasnwBxeROlj/9WChbqMkfs/rhTWA84KC+fz5P7Zuu7fwLqXICs2C4NGFoBnrqZzgHB46bMw==}
+    hasBin: true
+    dependencies:
+      '@types/command-line-args': 5.2.0
+      '@types/command-line-usage': 5.0.2
+      '@types/node': 18.7.23
+      '@types/pad-left': 2.1.1
+      command-line-args: 5.2.1
+      command-line-usage: 6.1.3
+      flatbuffers: 2.0.4
+      json-bignum: 0.0.3
+      pad-left: 2.1.0
+      tslib: 2.5.0
+    dev: false
+
+  /@apache-arrow/ts/11.0.0:
+    resolution: {integrity: sha512-BAbf76tIebFmSYCtocXdpKG5WpBpKYZtOCPvvhHrQE7VaqaaTecdkD73+NNivkwnfdIUawxDJgGKblJzy/3geg==}
+    dependencies:
+      '@types/command-line-args': 5.2.0
+      '@types/command-line-usage': 5.0.2
+      '@types/flatbuffers': 1.10.0
+      '@types/node': 18.7.23
+      '@types/pad-left': 2.1.1
+      command-line-args: 5.2.1
+      command-line-usage: 6.1.3
+      flatbuffers: 2.0.4
+      json-bignum: 0.0.3
+      pad-left: 2.1.0
+      tslib: 2.5.0
+    dev: false
 
   /@babel/helper-string-parser/7.19.4:
     resolution: {integrity: sha512-nHtDoQcuqFmwYNYPz3Rah5ph2p8PFeFCsZk9A/48dPc/rGocJ5J3hAAZ7pb76VWX3fZKu+uEr/FhH5jLx7umrw==}

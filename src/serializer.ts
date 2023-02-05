@@ -1,4 +1,4 @@
-import { tableFromIPC, tableToIPC } from 'apache-arrow';
+import { tableFromIPC, tableToIPC } from '@apache-arrow/es5-cjs';
 
 import * as serializerPb from "./proto_stubs/serializer/serializer_pb";
 import { getValueType, PROTO_TYPE } from "./utils";
@@ -124,7 +124,7 @@ function encodeNdarray(jsValue: any): serializerPb.Value {
     let pbValue = serializerPb.Value.create();
     pbValue.type = serializerPb.Value.Type.NDARRAY;
     const param: any = {
-        bytes: jsValue.bytes,
+        bytes_: jsValue.bytes,
         shape: jsValue.shape,
         type: jsValue.type    
     }
@@ -204,10 +204,12 @@ function decodeValue(pbValue: serializerPb.Value): any {
 
 export function dumps(jsValue: any): Uint8Array {
     let pbValue = encodeValue(jsValue);
-    return serializerPb.Value.encode(pbValue).finish();
+    let serValue = serializerPb.Value.encode(pbValue).finish()
+    return serValue;
 }
 
-export function loads(pbValue: Uint8Array): any {
-    let pbValueObj = serializerPb.Value.decode(pbValue);
-    return decodeValue(pbValueObj);
+export function loads(serValue: Uint8Array): any {
+    let pbValue = serializerPb.Value.decode(serValue);
+    let jsValue = decodeValue(pbValue);
+    return jsValue;
 }

@@ -11,8 +11,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowJs": true,
-    "declaration": true,
-    "strictNullChecks": true
+    "declaration": true
+    // "strictNullChecks": true
   },
   "include": ["src/**/*"]
 }

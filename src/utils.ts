@@ -1,4 +1,4 @@
-import { Table } from 'apache-arrow';
+import { Table } from '@apache-arrow/es5-cjs';
 
 import * as serializerPb from "./proto_stubs/serializer/serializer_pb";
 
@@ -26,6 +26,7 @@ export function getValueType(jsValue: any): number {
     if (typeof jsValue == "object" && jsValue instanceof Table) { return PROTO_TYPE.DATAFRAME; }
     if (typeof jsValue == "object" && jsValue.constructor == Uint8Array) { return PROTO_TYPE.BYTES_; }
     if (typeof jsValue == "object" && jsValue instanceof Array) { return PROTO_TYPE.LIST; }
+    if (typeof jsValue == "object" && "__value_type__" in jsValue && jsValue["__value_type__"] == "ndarray") { return PROTO_TYPE.NDARRAY; }
     if (typeof jsValue == "object" && jsValue instanceof Object) { return PROTO_TYPE.DICT; }
     throw new Error(`Cannot encode value of type ${typeof jsValue}`);
 }
@@ -57,7 +58,7 @@ export function getValueDescription(value: any, max_length?: number): string {
         return "Shape: [" + value.shape.join(", ") + "]";
     }
     else if (type == PROTO_TYPE.DATAFRAME) {
-        return "Shape: [" + value.shape.join(", ") + "]";
+        return "Columns: " + value.schema.fields.length;
     }
     else {
         throw new Error(`Cannot describe value of type ${type}`);
@@ -116,4 +117,15 @@ export function stringToFloat(value: string): number {
         throw new Error(`Value '${value}' is not a legal float.`);
     }
     return Number(value);
+}
+
+
+export function setSubValue(value: any, keys: string[], newValue: any) {
+    if (keys.length == 0) { return newValue; }
+    let subValue = value;
+    for (let i=0; i<keys.length-1; i++) {
+        subValue = subValue[keys[i]!];
+    }
+    subValue[keys[keys.length-1]!] = newValue;
+    return value;
 }

@@ -115,6 +115,12 @@ describe("db1", () => {
 
     const key = "test";
 
+    test("getItemAndMetaVariables", async () => {
+        const item = await db1.getItemAndMetaVariables(key);
+    });
+    
+
+
     test("int", async () => {
         const value = VALUE_LIST["int"];
         await db1.setItem(key, value);

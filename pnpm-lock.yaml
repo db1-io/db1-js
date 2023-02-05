@@ -2,12 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@apache-arrow/es5-cjs': ^11.0.0
-  '@apache-arrow/esnext-cjs': ^11.0.0
-  '@apache-arrow/esnext-esm': ^11.0.0
-  '@apache-arrow/esnext-umd': ^11.0.0
-  '@apache-arrow/ts': ^11.0.0
   '@types/node': ^18.11.18
-  apache-arrow: ^11.0.0
   cross-fetch: ^3.1.5
   long: ^5.2.1
   protobufjs: ^7.1.2
@@ -18,11 +13,6 @@ specifiers:
 
 dependencies:
   '@apache-arrow/es5-cjs': 11.0.0
-  '@apache-arrow/esnext-cjs': 11.0.0
-  '@apache-arrow/esnext-esm': 11.0.0
-  '@apache-arrow/esnext-umd': 11.0.0
-  '@apache-arrow/ts': 11.0.0
-  apache-arrow: 11.0.0
   cross-fetch: 3.1.5
   long: 5.2.1
   protobufjs: 7.1.2
@@ -42,70 +32,6 @@ packages:
     dependencies:
       '@types/command-line-args': 5.2.0
       '@types/command-line-usage': 5.0.2
-      '@types/node': 18.7.23
-      '@types/pad-left': 2.1.1
-      command-line-args: 5.2.1
-      command-line-usage: 6.1.3
-      flatbuffers: 2.0.4
-      json-bignum: 0.0.3
-      pad-left: 2.1.0
-      tslib: 2.5.0
-    dev: false
-
-  /@apache-arrow/esnext-cjs/11.0.0:
-    resolution: {integrity: sha512-S3oddRt0WyvlEsf8sl3ZbpE1R29wU0jocjFovK4TBAg0IaGM+5EncuiVvjSNw8O+LLlSQRq5LKBKf6Iw9X6fOg==}
-    hasBin: true
-    dependencies:
-      '@types/command-line-args': 5.2.0
-      '@types/command-line-usage': 5.0.2
-      '@types/node': 18.7.23
-      '@types/pad-left': 2.1.1
-      command-line-args: 5.2.1
-      command-line-usage: 6.1.3
-      flatbuffers: 2.0.4
-      json-bignum: 0.0.3
-      pad-left: 2.1.0
-      tslib: 2.5.0
-    dev: false
-
-  /@apache-arrow/esnext-esm/11.0.0:
-    resolution: {integrity: sha512-EUznE3ZooWIPrWLdY3jlh9DIM5wnne2rY0LldSJeIVoK+MbP8hfk6jHG2zsLRGfDHqEPcsE+QqpWkTXQKYBMcA==}
-    hasBin: true
-    dependencies:
-      '@types/command-line-args': 5.2.0
-      '@types/command-line-usage': 5.0.2
-      '@types/node': 18.7.23
-      '@types/pad-left': 2.1.1
-      command-line-args: 5.2.1
-      command-line-usage: 6.1.3
-      flatbuffers: 2.0.4
-      json-bignum: 0.0.3
-      pad-left: 2.1.0
-      tslib: 2.5.0
-    dev: false
-
-  /@apache-arrow/esnext-umd/11.0.0:
-    resolution: {integrity: sha512-ZJIbWYQDmH5vaVHasnwBxeROlj/9WChbqMkfs/rhTWA84KC+fz5P7Zuu7fwLqXICs2C4NGFoBnrqZzgHB46bMw==}
-    hasBin: true
-    dependencies:
-      '@types/command-line-args': 5.2.0
-      '@types/command-line-usage': 5.0.2
-      '@types/node': 18.7.23
-      '@types/pad-left': 2.1.1
-      command-line-args: 5.2.1
-      command-line-usage: 6.1.3
-      flatbuffers: 2.0.4
-      json-bignum: 0.0.3
-      pad-left: 2.1.0
-      tslib: 2.5.0
-    dev: false
-
-  /@apache-arrow/ts/11.0.0:
-    resolution: {integrity: sha512-BAbf76tIebFmSYCtocXdpKG5WpBpKYZtOCPvvhHrQE7VaqaaTecdkD73+NNivkwnfdIUawxDJgGKblJzy/3geg==}
-    dependencies:
-      '@types/command-line-args': 5.2.0
-      '@types/command-line-usage': 5.0.2
-      '@types/flatbuffers': 1.10.0
       '@types/node': 18.7.23
       '@types/pad-left': 2.1.1
       command-line-args: 5.2.1
@@ -438,10 +364,6 @@ packages:
     resolution: {integrity: sha512-n7RlEEJ+4x4TS7ZQddTmNSxP+zziEG0TNsMfiRIxcIVXt71ENJ9ojeXmGO3wPoTdn7pJcU2xc3CJYMktNT6DPg==}
     dev: false
 
-  /@types/flatbuffers/1.10.0:
-    resolution: {integrity: sha512-7btbphLrKvo5yl/5CC2OCxUSMx1wV1wvGT1qDXkSt7yi00/YW7E8k6qzXqJHsp+WU0eoG7r6MTQQXI9lIvd0qA==}
-    dev: false
-
   /@types/linkify-it/3.0.2:
     resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
     dev: true
@@ -500,23 +422,6 @@ packages:
     dependencies:
       color-convert: 2.0.1
     dev: true
-
-  /apache-arrow/11.0.0:
-    resolution: {integrity: sha512-M8J4y+DimIyS44w2KOmVfzNHbTroR1oDpBKK6BYnlu8xVB41lxTz0yLmapo8/WJVAt5XcinAxMm14M771dm/rA==}
-    hasBin: true
-    dependencies:
-      '@types/command-line-args': 5.2.0
-      '@types/command-line-usage': 5.0.2
-      '@types/flatbuffers': 1.10.0
-      '@types/node': 18.7.23
-      '@types/pad-left': 2.1.1
-      command-line-args: 5.2.1
-      command-line-usage: 6.1.3
-      flatbuffers: 2.0.4
-      json-bignum: 0.0.3
-      pad-left: 2.1.0
-      tslib: 2.5.0
-    dev: false
 
   /arg/4.1.3:
     resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==}

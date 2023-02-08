@@ -55,7 +55,7 @@ export function getValueDescription(value: any, max_length?: number): string {
         else { return desc; }
     }
     else if (type == PROTO_TYPE.NDARRAY) {
-        return "Shape: [" + value.shape.join(", ") + "]";
+        return "Shape: [" + value.shape.join(', ') + "] | Type: " + value.type;
     }
     else if (type == PROTO_TYPE.DATAFRAME) {
         return "Columns: " + value.schema.fields.length;

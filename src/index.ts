@@ -9,7 +9,7 @@ import * as errors from "./item/errors";
 import * as utils from "./utils";
 import * as serializerPb from "./proto_stubs/serializer/serializer_pb";
 import * as itemApiPb from "./proto_stubs/api/item_cr_0v1_pb";
-
+import * as serializer from "./serializer";
 
 export const db1 = {
 
@@ -38,6 +38,7 @@ export const db1 = {
         await setRequest(key, valueBytes)
     },
 
+    serializer,
     errors,
     utils,
     protos : {
